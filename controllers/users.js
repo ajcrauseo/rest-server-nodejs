@@ -1,13 +1,11 @@
 const { response, request } = require('express');
 
 const getUsers = (req = request, res = response) => {
-  const { q = 'Query empty', name, apikey } = req.query;
+  const { name = 'No name'} = req.query;
 
   res.json({
     msg: 'get API - controller',
-    q,
     name,
-    apikey,
   });
 };
 
