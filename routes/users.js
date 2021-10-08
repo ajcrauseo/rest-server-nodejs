@@ -13,7 +13,8 @@ const {
   emailExists,
   idExists,
 } = require('../helpers/db-validators');
-const { fieldsValidator } = require('../middlewares/fieldsValidator');
+
+const { fieldsValidator, JWTValidator, hasRole } = require('../middlewares');
 
 const router = Router();
 
@@ -51,6 +52,8 @@ router.patch('/', patchUsers);
 router.delete(
   '/:id',
   [
+    JWTValidator,
+    hasRole('ADMIN_ROLE', 'USER_ROLE', 'VENTAS_ROLE'),
     check('id', 'ID is not valid').isMongoId(),
     check('id').custom(idExists),
     fieldsValidator,
