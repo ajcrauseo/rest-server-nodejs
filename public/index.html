@@ -36,7 +36,11 @@
 
         const body = { id_token: response.credential };
 
-        fetch('http://localhost:8080/api/auth/google-auth', {
+        const url = window.location.hostname.includes('localhost')
+          ? 'http://localhost:8080/api/auth/google-auth'
+          : 'https://ajcrauseo-restserver-nodejs.herokuapp.com/api/auth/google-auth';
+
+        fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
