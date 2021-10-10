@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const { SECRETE_OR_PRIVATE_KEY } = process.env;
+const { SECRET_OR_PRIVATE_KEY } = process.env;
 
 const JWTValidator = async (req = request, res = response, next) => {
   const token = req.header('x-token');
@@ -15,7 +15,7 @@ const JWTValidator = async (req = request, res = response, next) => {
   }
 
   try {
-    const { uid } = jwt.verify(token, SECRETE_OR_PRIVATE_KEY);
+    const { uid } = jwt.verify(token, SECRET_OR_PRIVATE_KEY);
 
     const user = await User.findById(uid);
 

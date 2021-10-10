@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { SECRETE_OR_PRIVATE_KEY } = process.env;
+const { SECRET_OR_PRIVATE_KEY } = process.env;
 
 const generateJWT = (uid = '') => {
   return new Promise((res, rej) => {
@@ -10,7 +10,7 @@ const generateJWT = (uid = '') => {
       // Payload
       payload,
       // Secret key
-      SECRETE_OR_PRIVATE_KEY,
+      SECRET_OR_PRIVATE_KEY,
       // Options
       {
         expiresIn: '2h',

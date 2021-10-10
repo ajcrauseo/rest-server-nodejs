@@ -11,7 +11,7 @@ const {
 const {
   isRolValid,
   emailExists,
-  idExists,
+  userIdExists,
 } = require('../helpers/db-validators');
 
 const { fieldsValidator, JWTValidator, hasRole } = require('../middlewares');
@@ -24,7 +24,7 @@ router.put(
   '/:id',
   [
     check('id', 'ID is not valid').isMongoId(),
-    check('id').custom(idExists),
+    check('id').custom(userIdExists),
     check('rol', 'Rol is not valid').custom(isRolValid),
     fieldsValidator,
   ],
@@ -55,7 +55,7 @@ router.delete(
     JWTValidator,
     hasRole('ADMIN_ROLE', 'USER_ROLE', 'VENTAS_ROLE'),
     check('id', 'ID is not valid').isMongoId(),
-    check('id').custom(idExists),
+    check('id').custom(userIdExists),
     fieldsValidator,
   ],
   deleteUsers,
