@@ -191,3 +191,9 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Uploads
+
+uploads/products/**.*
+uploads/users/**.*
+uploads/**/

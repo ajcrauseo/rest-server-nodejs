@@ -1,10 +1,10 @@
 // Product = {
-//   name: 
-//   state: 
-//   user: 
-//   price: 
-//   category: 
-//   available: 
+//   name:
+//   state:
+//   user:
+//   price:
+//   category:
+//   available:
 // };
 const { Schema, model } = require('mongoose');
 
@@ -39,6 +39,9 @@ const ProductSchema = Schema({
   available: {
     type: Boolean,
     default: true,
+  },
+  img: {
+    type: String,
   },
 });
 
